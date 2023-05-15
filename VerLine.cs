@@ -8,7 +8,7 @@ namespace ussgame
 {
     class VerLine : Figure
     {
-        public VerLine(int yLeft, int yRight, int x, char sym)
+        public VerLine(int yLeft, int yRight, int x, string sym)
         {
             pList = new List<Point>();
             for (int i = yLeft; i <= yRight; i++)

@@ -10,9 +10,9 @@ namespace ussgame
     {
         public int x;
         public int y;
-        public char sym;
+        public string sym;
 
-        public Point(int _x, int _y, char _sym)
+        public Point(int _x, int _y, string _sym)
         {
             x = _x;
             y = _y;
@@ -55,7 +55,7 @@ namespace ussgame
 
         public void Clear()
         {
-            sym = ' ';
+            sym = " ";
             Draw();
         }
 

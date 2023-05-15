@@ -8,7 +8,7 @@ namespace ussgame
 {
     class HorLine : Figure
     {
-        public HorLine(int xLeft, int xRight, int y, char sym)
+        public HorLine(int xLeft, int xRight, int y, string sym)
         {
             pList = new List<Point>();
             for (int i = xLeft; i <= xRight; i++)
