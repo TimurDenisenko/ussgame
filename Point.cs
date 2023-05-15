@@ -52,5 +52,10 @@ namespace ussgame
                 y+=offset;
             }
         }
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
+        }
     }
 }
