@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ussgame
 {
-    class VerLine
+    class VerLine : Figure
     {
-        List<Point> pList;
         public VerLine(int yLeft, int yRight, int x, char sym)
         {
             pList = new List<Point>();
@@ -16,14 +15,6 @@ namespace ussgame
             {
                 Point p = new Point(x, i, sym);
                 pList.Add(p);
-            }
-        }
-
-        public void Drow()
-        {
-            foreach (Point p in pList)
-            {
-                p.Draw();
             }
         }
     }
