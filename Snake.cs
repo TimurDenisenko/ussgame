@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ussgame
 {
     class Snake : Figure
     {
-        Direction direction;
+        public Direction direction;
         public Snake(Point tail, int length, Direction _direction)
         {
             direction= _direction;
@@ -20,6 +21,7 @@ namespace ussgame
                 pList.Add(p);
             }
         }
+
         internal void Move()
         {
             Point tail = pList.First();
@@ -38,6 +40,7 @@ namespace ussgame
             nextPoint.Move(1, direction);
             return nextPoint;
         }
+
         public void Moving(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
@@ -56,6 +59,34 @@ namespace ussgame
             {
                 direction = Direction.UP;
             }
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        internal bool IsHitTail()
+        {
+            var head = pList.Last();
+            for (int i = 0; i < pList.Count - 2; i++)
+            {
+                if (head.IsHit(pList[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

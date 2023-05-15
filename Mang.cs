@@ -10,30 +10,51 @@ namespace ussgame
     {
         public static void Main(string[] args)
         {
+            int speed = 100;
             Console.SetWindowSize(80, 26);
-            HorLine upLine = new HorLine(0,78,0,'*');
-            HorLine downLine = new HorLine(0, 78, 24, '*');
-            VerLine leftLine = new VerLine(0,24,0,'*');
-            VerLine rightLine = new VerLine(0, 24, 78, '*');
-            upLine.Drow();
-            downLine.Drow();
-            leftLine.Drow();
-            rightLine.Drow();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
-            Point p = new Point(4,5,'*');
+            Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drow();
+
+            Food newfood = new Food(80, 25, '*');
+            Point food = newfood.CreateFood();
+            Console.ForegroundColor = ConsoleColor.Green;
+            food.Draw();
+            Console.ForegroundColor = ConsoleColor.White;
+
             while (true)
             {
+                if (walls.IsHit(snake)||snake.IsHitTail())
+                {
+                    break;
+                }
+                if (snake.Eat(food))
+                {
+                    food = newfood.CreateFood();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    food.Draw();
+                    Console.ForegroundColor = ConsoleColor.White;
+                    if (speed!=30)
+                    {
+                        speed-=1;
+                    }
+
+                }
+                else
+                {
+                    snake.Move();
+                }
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.Moving(key.Key);
                 }
-                Thread.Sleep(100);
-                snake.Move();
-            }
+                Thread.Sleep(speed);
 
+            }
         }
     }
 }
