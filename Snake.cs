@@ -68,6 +68,8 @@ namespace ussgame
             {
                 food.sym = head.sym;
                 pList.Add(food);
+                Heli muusika = new Heli();
+                _ = muusika.Tagaplaanis_Mangida("../../../povezlo.mp3");
                 return true;
             }
             else
