@@ -23,6 +23,7 @@ namespace ussgame
 
         public Point CreateFood()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             int x = random.Next(3, mapWidth - 2);
             int y = random.Next(3, mapHeight - 2);
             return new Point(x, y, sym);

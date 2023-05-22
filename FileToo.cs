@@ -22,6 +22,7 @@ namespace ussgame
             text.Close();
             return rec;
         }
+
         public static void ListToFile(Dictionary<string, string> rec, string file)
         {
             StreamWriter text = new StreamWriter(file);

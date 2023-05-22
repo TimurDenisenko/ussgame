@@ -18,7 +18,7 @@ namespace ussgame
             }
         }
 
-        public override void Drow()
+        public override void Draw()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             foreach (Point p in pList)
