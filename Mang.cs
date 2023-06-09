@@ -17,7 +17,15 @@ namespace ussgame
 
             if (n==1 || n==2 || n==4)
             {
-                Elements.Muusika();
+                int color1 = 0;
+                int color2 = 0;
+                if (n==4)
+                {
+                    Tuple<int, int> colors = Elements.Setting();
+                    color1 = colors.Item1;
+                    color2 = colors.Item2;
+                }
+                Elements.Muusika(nimi);
 
                 Walls walls = new Walls(80, 20);
                 walls.Draw();
@@ -32,7 +40,7 @@ namespace ussgame
 
                 while (true)
                 {
-                    Elements.Static(elements.Points, elements.Speeds, elements.Lengths);
+                    Elements.Static(elements.Points, elements.Speeds, elements.Lengths, color1, color2);
 
                     if (walls.IsHit(snake)||snake.IsHitTail())
                     {
@@ -66,6 +74,11 @@ namespace ussgame
             else if (n==3)
             {
                 Elements.Watch();
+            }
+            else if (n==5)
+            {
+                Console.Clear();
+                Console.WriteLine("Head aega!");
             }
             Console.ReadLine();
         }
